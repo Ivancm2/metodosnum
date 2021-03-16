@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 int main(){
-    int a;
+    int a=10;
+    printf("%i",a);
     printf("Hola mundo como estan");
     return 0;
 }
