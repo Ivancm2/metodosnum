@@ -13,8 +13,10 @@ int main(){
     //fwrite( cadena, sizeof(char), sizeof(cadena), fp );
     //fread(void *ptr, size_t size, size_t nobj, FILE *stream);
     int i=1;
+    int total=0;
     while (feof(origen)==0){
-        printf("Copiando archivo parte %d de ?\n",i);
+        total=total+sizeof(contenido);
+        printf("Llevamos %d bytes\n",total);
         fread(contenido,sizeof(char),sizeof(contenido),origen);
         fwrite(contenido,sizeof(char),sizeof(contenido),destino);
         i++;
