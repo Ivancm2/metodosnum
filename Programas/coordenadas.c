@@ -2,15 +2,7 @@
 #include <windows.h>  
 #include <stdlib.h>
 #include <string.h>
-
-void gotoxy(int x,int y){  
-      HANDLE hcon;  
-      hcon = GetStdHandle(STD_OUTPUT_HANDLE);  
-      COORD dwPos;  
-      dwPos.X = x;  
-      dwPos.Y= y;  
-      SetConsoleCursorPosition(hcon,dwPos);  
-}
+#include "misfunciones.h"
 void rojo(){
     printf("\033[0;31m");
 }
@@ -35,6 +27,20 @@ int main(){
     gotoxy(posicioninicial/2,1);
     printf("BIENVENIDO AL JUEGO");
     gotoxy(0,60);
+    Sleep(5000);
+    system("cls");
+    for (int y=0; y<20; y++){
+        gotoxy(1,y);
+        printf("*");
+         gotoxy(52,y);
+        printf("*");
+    }
+    for (int x=1; x<=52; x++){
+        gotoxy(x,0);
+        printf("*");
+         gotoxy(x,20);
+        printf("*");
+    }
     return 0;  
 
 }  
