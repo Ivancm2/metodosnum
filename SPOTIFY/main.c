@@ -4,21 +4,11 @@
 #include <windows.h>
 #include <math.h>
 #include <stdlib.h>
-
-int main(){
-    char eleccion, usuario[50],linea[50],caracter;
+void implogin(){
     FILE *archivo;
-    system("cls");
-    gotoxy(5,0);
-    printf("Bienvenido a tu Spotify");
-    gotoxy(10,5);
-    printf("Aqui se creara el circulo");
-    gotoxy(5,8);
-    printf("1. LOGIN");
-    gotoxy(5,9);
-    printf("2. REGISTER\n");
-    eleccion=getchar();
-    if (eleccion=='1'){
+    char usuario[50],caracter, *linea;
+    int i=0, usuarioCorrecto=0;
+    while (usuarioCorrecto==0){
         system("cls");
         gotoxy(5,0);
         printf("SELECCIONASTE LA OPCION LOGIN");
@@ -30,8 +20,6 @@ int main(){
         printf("ESCRIBE R PARA REGRESAR\n");
         scanf("%s",usuario);
         archivo=fopen("usuarios.txt","r");
-        int i=0, usuarioCorrecto=0;
-        char *linea;
         linea=(char *)malloc(50);
         caracter=fgetc(archivo);
         while (caracter!=EOF){
@@ -41,21 +29,44 @@ int main(){
                 caracter=fgetc(archivo);
             }
             linea[i]='\0';
-            printf("%s y %s\n",linea,usuario);
-            if (linea==usuario){
+            if (strcmp(linea,usuario)==0){
                 usuarioCorrecto=1;
-                printf("Usuario Correcto");
                 break;
             }
             free(linea);
             linea=(char*)malloc(50);
             caracter=fgetc(archivo);
             i=0;
-        }
+            }
         if (usuarioCorrecto==1){
             printf("Bienvenido %s",usuario);
+        }else{
+            printf("Usuario incorrecto, presiona cualquier tecla para continuar\n");
+            while (getchar()!='\n');
+            getchar();
         }
+    }
+}
+int main(){
+    char eleccion;
+    
+    system("cls");
+    gotoxy(5,0);
+    printf("Bienvenido a tu Spotify");
+    gotoxy(10,5);
+    printf("Aqui se creara el circulo");
+    gotoxy(5,8);
+    printf("1. LOGIN");
+    gotoxy(5,9);
+    printf("2. REGISTER\n");
+    eleccion=getchar();
+    while (getchar()!='\n');
+    
+    if (eleccion=='1'){
+        implogin();
         //VALIDAR QUE EL USUARIO ESTE EN EL ARCHIVO.TXT
-    }    
+    }else if (eleccion=='2'){
+
+    } 
     return 0;
 }
