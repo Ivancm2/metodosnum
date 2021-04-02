@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <math.h>
 #include <stdlib.h>
-void implogin(){
+void login(){
     FILE *archivo;
     char usuario[50],caracter, *linea;
     int i=0, usuarioCorrecto=0;
@@ -47,6 +47,9 @@ void implogin(){
         }
     }
 }
+void registrar(){
+    
+}
 int main(){
     char eleccion;
     
@@ -63,10 +66,10 @@ int main(){
     while (getchar()!='\n');
     
     if (eleccion=='1'){
-        implogin();
+        login();
         //VALIDAR QUE EL USUARIO ESTE EN EL ARCHIVO.TXT
     }else if (eleccion=='2'){
-
+        registrar();
     } 
     return 0;
 }
