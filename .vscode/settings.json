@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "programa1.C": "cpp"
+        "programa1.C": "cpp",
+        "misfunciones.h": "c",
+        "cmath": "c"
     }
 }
